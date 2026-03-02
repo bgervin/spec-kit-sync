@@ -1,13 +1,20 @@
 # 🔄 spec-kit-sync
 
-**Stop lying to your AI agents.**
+<div align="center">
+  <img src="logo.svg" alt="spec-kit-sync logo" width="150" height="150"/>
+  <br/>
+  <strong>Stop lying to your AI agents.</strong>
+  <br/><br/>
+
+  [![CI](https://github.com/bgervin/spec-kit-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/bgervin/spec-kit-sync/actions/workflows/ci.yml)
+  [![spec-kit extension](https://img.shields.io/badge/spec--kit-extension-blue)](https://github.com/github/spec-kit)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Latest Release](https://img.shields.io/github/v/release/bgervin/spec-kit-sync)](https://github.com/bgervin/spec-kit-sync/releases/latest)
+</div>
+
+<br/>
 
 Your specs say one thing. Your code does another. Every time an AI reads your specs, it generates code that conflicts with reality. This extension fixes that.
-
-[![CI](https://github.com/bgervin/spec-kit-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/bgervin/spec-kit-sync/actions/workflows/ci.yml)
-[![spec-kit extension](https://img.shields.io/badge/spec--kit-extension-blue)](https://github.com/github/spec-kit)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Latest Release](https://img.shields.io/github/v/release/bgervin/spec-kit-sync)](https://github.com/bgervin/spec-kit-sync/releases/latest)
 
 ## The Problem
 

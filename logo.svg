@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#grad)"/>
+  
+  <!-- Sync arrows (circular) -->
+  <!-- Top arrow (right-pointing) -->
+  <path d="M 60 55 A 55 55 0 0 1 140 55" 
+        fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="145,50 145,70 160,60" fill="white"/>
+  
+  <!-- Bottom arrow (left-pointing) -->
+  <path d="M 140 145 A 55 55 0 0 1 60 145" 
+        fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <polygon points="55,150 55,130 40,140" fill="white"/>
+  
+  <!-- Spec text (left side) -->
+  <text x="58" y="108" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="22" font-weight="600" fill="white" text-anchor="middle">spec</text>
+  
+  <!-- Code braces (right side) -->
+  <text x="142" y="108" font-family="ui-monospace, monospace" 
+        font-size="26" font-weight="700" fill="white" text-anchor="middle">{ }</text>
+</svg>
