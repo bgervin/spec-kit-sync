@@ -238,18 +238,67 @@ tests/[paths discovered]
 [Any TODOs or comments suggesting future work]
 ```
 
-### 8. Output Options
+### 8. Generate Quickstart
+
+For user-facing features (CLI commands), create `quickstart.md`:
+
+```markdown
+# Quickstart: [Feature Name]
+
+[One-line description of what users can do]
+
+## Prerequisites
+
+1. [Prerequisite 1]
+2. [Prerequisite 2]
+
+## Basic Usage
+
+```bash
+# [Primary use case]
+fina [command] [args]
+```
+
+## Options
+
+| Option | Description |
+|--------|-------------|
+| `--option1` | [description] |
+| `--option2` | [description] |
+
+## Examples
+
+### [Use case 1]
+```bash
+fina [command] [example]
+```
+
+### [Use case 2]
+```bash
+fina [command] [example]
+```
+
+## Tips
+
+- [Tip 1]
+- [Tip 2]
+```
+
+Skip `quickstart.md` for internal/non-user-facing features.
+
+### 9. Output Options
 
 **Preview Mode (default):**
-Display generated spec, plan, and tasks for review.
+Display generated spec, plan, quickstart, and tasks for review.
 
 **Create Mode (`--create`):**
 1. Create `specs/{id}/spec.md`
 2. Create `specs/{id}/plan.md`
-3. Create `specs/{id}/tasks.md` (with review task)
-4. Report location
+3. Create `specs/{id}/quickstart.md` (if user-facing)
+4. Create `specs/{id}/tasks.md` (with review task)
+5. Report location
 
-### 9. Generate Review Task
+### 10. Generate Review Task
 
 Add a task to review the backfilled spec:
 
@@ -284,3 +333,4 @@ Add a task to review the backfilled spec:
 - Use this as a starting point, not a final spec
 - Consider whether the feature should be split into multiple specs
 - `plan.md` documents architecture decisions; useful for onboarding and future changes
+- `quickstart.md` is user documentation; skip for internal-only features
