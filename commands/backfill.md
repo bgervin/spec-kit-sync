@@ -173,17 +173,83 @@ ls specs/ | grep -E '^[0-9]+' | sort -n | tail -1
 
 Suggest: `{next_number}-{feature-name}`
 
-### 7. Output Options
+### 7. Generate Plan
+
+Create `plan.md` documenting the implementation architecture:
+
+```markdown
+# Implementation Plan: [Feature Name]
+
+**Branch**: `[spec-id]` | **Date**: [today] | **Spec**: [spec.md](spec.md)
+**Context**: Backfilled from existing implementation. Documents current architecture.
+
+## Summary
+
+[Brief description of what the feature does]
+
+## Technical Context
+
+**Language/Version**: [detected from project]
+**Primary Dependencies**:
+- [Service 1] — [purpose]
+- [Service 2] — [purpose]
+
+**Performance Goals**: [if identifiable from code/tests]
+
+## Architecture
+
+### Service Layer
+
+```
+[Main Service]
+├── [Dependency 1]
+├── [Dependency 2]
+└── [Dependency 3]
+```
+
+### Flow
+
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+### Key Design Decisions
+
+1. **[Decision 1]**: [rationale from code/comments]
+2. **[Decision 2]**: [rationale]
+
+## Project Structure
+
+```text
+src/[paths discovered]
+tests/[paths discovered]
+```
+
+## Dependencies
+
+- **Spec [XXX]**: [dependency]
+
+## Testing
+
+[Test file locations]
+
+## Future Considerations
+
+[Any TODOs or comments suggesting future work]
+```
+
+### 8. Output Options
 
 **Preview Mode (default):**
-Display generated spec for review.
+Display generated spec, plan, and tasks for review.
 
 **Create Mode (`--create`):**
 1. Create `specs/{id}/spec.md`
-2. Create `specs/{id}/tasks.md` (empty or with review task)
-3. Report location
+2. Create `specs/{id}/plan.md`
+3. Create `specs/{id}/tasks.md` (with review task)
+4. Report location
 
-### 8. Generate Review Task
+### 9. Generate Review Task
 
 Add a task to review the backfilled spec:
 
@@ -217,3 +283,4 @@ Add a task to review the backfilled spec:
 - The spec documents current behavior, which may include bugs
 - Use this as a starting point, not a final spec
 - Consider whether the feature should be split into multiple specs
+- `plan.md` documents architecture decisions; useful for onboarding and future changes
