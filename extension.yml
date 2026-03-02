@@ -1,0 +1,62 @@
+schema_version: "1.0"
+
+extension:
+  id: "sync"
+  name: "Spec Sync"
+  version: "0.1.0"
+  description: "Detect and resolve drift between specs and implementation. AI-assisted resolution with human approval."
+  author: "Barry Gervin"
+  repository: "https://github.com/bgervin/spec-kit-sync"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.1.0"
+  commands:
+    - "speckit.specify"
+    - "speckit.tasks"
+
+provides:
+  commands:
+    - name: "speckit.sync.analyze"
+      file: "commands/analyze.md"
+      description: "Analyze drift between specs and implementation"
+      aliases: ["speckit.drift"]
+
+    - name: "speckit.sync.propose"
+      file: "commands/propose.md"
+      description: "Propose resolutions for detected drift"
+      aliases: []
+
+    - name: "speckit.sync.apply"
+      file: "commands/apply.md"
+      description: "Apply approved drift resolutions"
+      aliases: []
+
+    - name: "speckit.sync.conflicts"
+      file: "commands/conflicts.md"
+      description: "Detect and surface inter-spec conflicts"
+      aliases: []
+
+    - name: "speckit.sync.backfill"
+      file: "commands/backfill.md"
+      description: "Generate spec from unspecced code feature"
+      aliases: []
+
+  config:
+    - name: "sync-config.yml"
+      template: "sync-config.template.yml"
+      description: "Sync extension configuration"
+      required: false
+
+hooks:
+  after_implement:
+    command: "speckit.sync.analyze"
+    optional: true
+    prompt: "Check for spec drift after implementation?"
+
+tags:
+  - "sync"
+  - "drift"
+  - "validation"
+  - "bidirectional"
+  - "ralph"

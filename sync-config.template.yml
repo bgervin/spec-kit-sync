@@ -1,0 +1,59 @@
+# Sync extension configuration
+# Copy to .specify/extensions/sync/sync-config.yml
+
+# Drift detection settings
+analysis:
+  # Include design docs in conflict detection
+  include_design_docs: true
+  
+  # Patterns for design doc locations
+  design_doc_patterns:
+    - "docs/plans/*.md"
+    - "docs/design/*.md"
+    - "**/DESIGN.md"
+  
+  # Ignore patterns (files to skip)
+  ignore_patterns:
+    - "**/bin/**"
+    - "**/obj/**"
+    - "**/node_modules/**"
+
+# Proposal settings
+proposals:
+  # Default resolution strategy
+  # Options: ask, backfill-prefer, align-prefer
+  default_strategy: ask
+  
+  # Confidence threshold below which human review is required
+  min_confidence: 0.7
+  
+  # Auto-approve high-confidence backfills in Ralph loops
+  auto_backfill_in_loops: false
+
+# Ralph loop integration
+ralph:
+  # Run sync after each iteration
+  post_iteration_check: true
+  
+  # What to do when drift is detected
+  # Options: pause, backfill, warn
+  on_drift: pause
+  
+  # Path to Ralph loop state file (if using Ralph)
+  state_file: ".ralph/state.json"
+
+# Output settings
+output:
+  # Where to store sync artifacts
+  artifacts_dir: ".specify/sync"
+  
+  # Keep history of drift reports
+  keep_history: true
+  history_limit: 10
+
+# Supersede tracking
+supersedes:
+  # Track which specs/docs supersede others
+  # Format: "source": "superseded_by"
+  # Example:
+  # "specs/008-field-extraction/spec.md#FR-003": "docs/plans/2026-02-19-type-aware-extraction-design.md"
