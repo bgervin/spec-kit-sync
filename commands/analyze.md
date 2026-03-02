@@ -1,8 +1,7 @@
 ---
 description: "Analyze drift between specs and implementation. Compares requirements against code to find divergence."
 tools: []
-scripts:
-  sh: ../scripts/analyze.sh
+scripts: []
 ---
 
 # Spec Sync: Analyze Drift

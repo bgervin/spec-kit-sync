@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Config (user-specific)
+sync-config.yml
+sync-config.local.yml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Output
+*.log
+.specify/sync/
