@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate extension.yml
+        run: |
+          # Check extension.yml exists
+          if [ ! -f extension.yml ]; then
+            echo "❌ extension.yml not found"
+            exit 1
+          fi
+          echo "✅ extension.yml exists"
+
+          # Validate YAML syntax
+          python3 -c "import yaml; yaml.safe_load(open('extension.yml'))" || {
+            echo "❌ extension.yml has invalid YAML syntax"
+            exit 1
+          }
+          echo "✅ extension.yml has valid YAML syntax"
+
+          # Check required fields
+          python3 << 'EOF'
+          import yaml
+          import sys
+
+          with open('extension.yml') as f:
+              ext = yaml.safe_load(f)
+
+          required = ['schema_version', 'extension']
+          ext_required = ['id', 'name', 'version', 'description', 'author']
+
+          errors = []
+          for field in required:
+              if field not in ext:
+                  errors.append(f"Missing required field: {field}")
+
+          if 'extension' in ext:
+              for field in ext_required:
+                  if field not in ext['extension']:
+                      errors.append(f"Missing extension.{field}")
+
+          if errors:
+              for e in errors:
+                  print(f"❌ {e}")
+              sys.exit(1)
+          
+          print("✅ All required fields present")
+          print(f"   Extension: {ext['extension']['name']} v{ext['extension']['version']}")
+          EOF
+
+      - name: Validate command files
+        run: |
+          if [ -d commands ]; then
+            for cmd in commands/*.md; do
+              if [ -f "$cmd" ]; then
+                # Check frontmatter exists
+                if head -1 "$cmd" | grep -q "^---"; then
+                  echo "✅ $cmd has frontmatter"
+                else
+                  echo "⚠️ $cmd missing frontmatter (optional but recommended)"
+                fi
+              fi
+            done
+          else
+            echo "⚠️ No commands directory found"
+          fi
+
+      - name: Check required files
+        run: |
+          files=("README.md" "CHANGELOG.md" "extension.yml")
+          for f in "${files[@]}"; do
+            if [ -f "$f" ]; then
+              echo "✅ $f exists"
+            else
+              echo "❌ $f missing"
+              exit 1
+            fi
+          done

@@ -4,8 +4,10 @@
 
 Your specs say one thing. Your code does another. Every time an AI reads your specs, it generates code that conflicts with reality. This extension fixes that.
 
-[![spec-kit extension](https://img.shields.io/badge/spec--kit-extension-blue)](https://github.com/bgervin/spec-kit)
+[![CI](https://github.com/bgervin/spec-kit-sync/actions/workflows/ci.yml/badge.svg)](https://github.com/bgervin/spec-kit-sync/actions/workflows/ci.yml)
+[![spec-kit extension](https://img.shields.io/badge/spec--kit-extension-blue)](https://github.com/github/spec-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Latest Release](https://img.shields.io/github/v/release/bgervin/spec-kit-sync)](https://github.com/bgervin/spec-kit-sync/releases/latest)
 
 ## The Problem
 
